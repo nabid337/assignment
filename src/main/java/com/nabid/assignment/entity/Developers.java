@@ -10,9 +10,9 @@ public class Developers {
 
 
     @Id
-   // @GeneratedValue(strategy= GenerationType.AUTO)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "dev_seq")
-    @SequenceGenerator(sequenceName = "developers_seq", allocationSize = 1, name = "dev_seq")
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "dev_seq")
+   // @SequenceGenerator(sequenceName = "developers_seq", allocationSize = 1, name = "dev_seq")
     @Column(name = "dev_id")
     private long devId;
     @Column(name = "email")
