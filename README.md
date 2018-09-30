@@ -1,5 +1,9 @@
 # assignment
 
+# Application Properties
+Use your Database credentials.
+Heroku Postgres :: Database addons been used for the project
+
 # Task:A (Search Website Search Website)
 source code can be found for this task \src\main\java\com\nabid\assignment\controller\SearchController.java
 
