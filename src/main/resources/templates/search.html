@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Search</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script th:src="@{/js/search.js}"></script>
+</head>
+
+<body>
+<h2>Search</h2>
+<div>
+    <form>
+        <p>Select Programming languages</p>
+        <select id="progLangSelect" required>
+            <option value="">--Select--</option>
+            <option th:each="pl : ${programmingLanguagesList}" th:value="${pl.progLangId}" th:text="${pl.name}"></option>
+        </select>
+        <p>Select languages</p>
+        <select id="languageSelect">
+            <option value="">--Select--</option>
+            <option th:each="lang : ${languagesList}" th:value="${lang.code}" th:text="${lang.name}"></option>
+        </select>
+    </form>
+</div>
+</br>
+</br>
+<h5>Selected Programming Languages</h5>
+<div id="searchPeramProg"></div>
+</br>
+</br>
+<h5>Selected Languages</h5>
+<div id="searchPeramLang">
+</div>
+</br>
+</br>
+<input type="button" value="Find Developers" id="findDevelopers"> <input type="button" value="Clear" id="clear">
+</br>
+</br>
+</br>
+<div id="tableDiv">
+</div>
+<div>
+</div>
+</body>
+
+</html>

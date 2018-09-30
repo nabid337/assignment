@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Interviews</title>
+
+    <!-- <script th:src="@{/js/search.js}"></script>-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous">
+
+    </script>
+
+    <script src="http://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js">
+    </script>
+
+    <link data-require="datatables@*" data-semver="1.10.12" rel="stylesheet"
+          href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+
+    <script th:src="@{/js/interviewsScript.js}"></script>
+
+
+
+
+
+</head>
+<body>
+
+<h2>Interviews</h2>
+
+<div class="col-md-3">
+
+        <div>
+            <label>Developers</label><label>*</label>
+            <select class = "form-control" id="developerSelect">
+                <option value="">--Select--</option>
+                <option th:each="dev : ${developersList}" th:value="${dev.devId}" th:text="${dev.email}"></option>
+            </select>
+        </div>
+            </br>
+        <div class="form-group">
+            <label>Comment</label><label>*</label>
+            <textarea class="form-control" rows="5" id="comment"></textarea>
+           <!-- <input type="text" class="form-control" id="comment">-->
+        </div>
+        <div class="form-group">
+            <label>Score</label><label>*</label>
+            <input type="text" class="form-control" id="score">
+        </div>
+
+      <!--  <button type="submit" class="btn btn-primary" id="addButton">Add</button>-->
+        <input type="button" class="btn btn-primary" value="Add" id = "addButton">
+    </form>
+
+    </br></br>
+
+    <h4>Interview Table</h4>
+    <div>
+        <table id="interviewTable" class="table table-hover table-bordered">
+            <thead>
+            <tr>
+                <th>interviewId</th>
+                <th>Score</th>
+                <th>Comment</th>
+                <th>Dev Id</th>
+                <th>Action</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="list, rowStat: ${interviewsList} " th:id ="${list.interviewId}" >
+                <td th:text="${list.interviewId}"></td>
+                <td th:text="${list.score}"></td>
+                <td th:text="${list.comment}"></td>
+                <td th:text="${list.devId}"></td>
+                <td><input type="button" class="btn btn-danger deleteClass" value="Delete" id="dev" th:custId="${list.interviewId}">
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>
