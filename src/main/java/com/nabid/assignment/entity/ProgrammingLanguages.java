@@ -7,8 +7,9 @@ import javax.persistence.*;
 public class ProgrammingLanguages {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "prog_seq")
-    @SequenceGenerator(sequenceName = "prog_lang_seq", allocationSize = 1, name = "prog_seq")
+     @GeneratedValue(strategy= GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "prog_seq")
+   // @SequenceGenerator(sequenceName = "prog_lang_seq", allocationSize = 1, name = "prog_seq")
     @Column(name = "prog_lang_id")
     private long progLangId;
 
