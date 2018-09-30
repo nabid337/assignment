@@ -6,8 +6,9 @@ import javax.persistence.*;
 @Table(name = "languages")
 public class Languages {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "lang_seq")
-    @SequenceGenerator(sequenceName = "languages_seq", allocationSize = 1, name = "lang_seq")
+    @GeneratedValue(strategy= GenerationType.AUTO)
+   // @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "lang_seq")
+   // @SequenceGenerator(sequenceName = "languages_seq", allocationSize = 1, name = "lang_seq")
     @Column(name = "lang_id")
     private long langId;
     @Column(name = "code")
