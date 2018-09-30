@@ -55,7 +55,7 @@ public class DatabaseSeeder {
             }
             else{
 
-                for (int i=0; i<10; i++){
+                for (int i=0; i<50; i++){
                     Developers developersNew = new Developers();
                     String email = getSaltString() + "@example.com";
                     developersNew.setEmail(email);
@@ -134,8 +134,8 @@ public class DatabaseSeeder {
         try{
             List<Developers> developersList = developersService.findAll();
             List<ProgrammingLanguages> programmingLanguagesList = programmingLanguagesService.findAll();
-
-            if (devProgService.findAll().size()>0){
+            List<DevProg> devProgList = devProgService.findAll();
+            if (devProgList.size()>0){
                 System.out.println("Developers Programming language join table already seeded");
             }
             else{
@@ -153,18 +153,22 @@ public class DatabaseSeeder {
                 for (int i=0; i<devId.size(); i++){
                     Random rand = new Random();
                     int n1 = rand.nextInt(progLangId.size()) + 0;
-                    int n2 = rand.nextInt(progLangId.size()) + 0;
-                    if (n2==n1) n2 = rand.nextInt(progLangId.size()) + 0;
+                    int n2 = rand.nextInt(devId.size()) + 0;
 
                     DevProg devProg1 = new DevProg();
-                    devProg1.setDevId(devId.get(i));
+                    devProg1.setDevId(devId.get(n2));
                     devProg1.setProgLangId(progLangId.get(n1));
                     devProgService.save(devProg1);
 
+
+                    int m1 = rand.nextInt(progLangId.size()) + 0;
+                    int m2 = rand.nextInt(devId.size()) + 0;
+
                     DevProg devProg2 = new DevProg();
-                    devProg2.setDevId(devId.get(i));
-                    devProg2.setProgLangId(progLangId.get(n2));
+                    devProg2.setDevId(devId.get(m2));
+                    devProg2.setProgLangId(progLangId.get(m1));
                     devProgService.save(devProg2);
+
 
 
                 }
@@ -182,8 +186,8 @@ public class DatabaseSeeder {
         try{
             List<Developers> developersList = developersService.findAll();
             List<Languages> languagesList = languagesService.findAll();
-
-            if (devLangService.findAll().size()>0){
+            List<DevLang> devLangList = devLangService.findAll();
+            if (devLangList.size()>0){
                 System.out.println("Developers Languages join table already seeded");
             }
             else{
@@ -201,18 +205,22 @@ public class DatabaseSeeder {
                 for (int i=0; i<devId.size(); i++){
                     Random rand = new Random();
                     int n1 = rand.nextInt(langId.size()) + 0;
-                    int n2 = rand.nextInt(langId.size()) + 0;
-                    if (n2==n1) n2 = rand.nextInt(langId.size()) + 0;
+                    int n2 = rand.nextInt(devId.size()) + 0;
 
                     DevLang devLang1 = new DevLang();
-                    devLang1.setDevId(devId.get(i));
-                    devLang1.setLangId(devId.get(i));
+                    devLang1.setDevId(devId.get(n2));
+                    devLang1.setLangId(langId.get(n1));
                     devLangService.save(devLang1);
 
+                    int m1 = rand.nextInt(langId.size()) + 0;
+                    int m2 = rand.nextInt(devId.size()) + 0;
+
                     DevLang devLang2 = new DevLang();
-                    devLang2.setDevId(devId.get(i));
-                    devLang2.setLangId(devId.get(i));
+                    devLang2.setDevId(devId.get(m2));
+                    devLang2.setLangId(langId.get(m1));
                     devLangService.save(devLang2);
+
+
 
 
                 }
