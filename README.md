@@ -9,6 +9,8 @@ source code can be found for this task \src\main\java\com\nabid\assignment\contr
 
 Functionality can be checked at http://localhost:8080/search
 
+Not used programming languages can be retrieved by GET request "/getNotUsedProgLang". 
+
 # Task:B (DB Seeder)
 source code can be found for this task \src\main\java\com\nabid\assignment\seeder\DatabaseSeeder.java
 
