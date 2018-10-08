@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigInteger;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,23 +31,40 @@ public class ApiController {
     @GetMapping(value = "/getDeveloper/{id}" , produces = "application/json")
     @ResponseBody
     public ResponseEntity<DeveloperDetail> getDeveloper(@PathVariable long id){
+
+
+
         try{
             List<Object[]> developerDetailList = developersService.getDevDetails(id);
+            String[] arrayLang = new String[developerDetailList.size()];
+            String[] arrayProg = new String[developerDetailList.size()];
+            int x=0,y=0;
 
             String progLang ="", langName = "";
-            for (int i=0; i<developerDetailList.size(); i++){
-                Object[] row = (Object[]) developerDetailList.get(i);
-                progLang+= row[2] + " ";
-                langName+= row[3] + " ";
+            try{
+                for (int i=0; i<developerDetailList.size(); i++){
+                    Object[] row = (Object[]) developerDetailList.get(i);
+                    //Object[] rowCheck = (Object[]) developerDetailList.get(i+1);
+                  //  if(!row[2].equals(rowCheck[2]))
+                        arrayProg[y++] = row[2]+"";
+                   // if(!row[3].equals(rowCheck[3]))
+                        arrayLang[x++] = row[3]+"" ;
+                }
             }
+            catch (Exception ex){
+
+            }
+            arrayLang = new HashSet<String>(Arrays.asList(arrayLang)).toArray(new String[0]);
+            arrayProg = new HashSet<String>(Arrays.asList(arrayProg)).toArray(new String[0]);
+
             Object[] row = (Object[]) developerDetailList.get(0);
             String s = new String(row[0].toString());
             long devId = Long.valueOf(s);
             DeveloperDetail developerDetail = new DeveloperDetail();
             developerDetail.setDev_id(devId);
             developerDetail.setEmail((String) row[1]);
-            developerDetail.setLangName(langName);
-            developerDetail.setProgramming_language(progLang);
+            developerDetail.setLangName(Arrays.toString(arrayLang));
+            developerDetail.setProgramming_language(Arrays.toString(arrayProg));
 
             return new ResponseEntity(developerDetail, HttpStatus.OK);
         }
