@@ -21,10 +21,10 @@ $(document).ready(function() {
         }
         else{
         var val = score.value;
-        if (/^\d{1}$/.test(score)) {
+        if (/^\d{1}$/.test(score) && score<="5") {
             // value is ok, use it
         } else {
-            alert("Only digit(0-9) allowed!")
+            alert("Only digit(0-5) allowed!")
             $("#score").focus();
             return false
         }
@@ -50,6 +50,7 @@ $(document).ready(function() {
                         "<td><input type=\"button\" class=\"btn btn-danger deleteClass\" value=\"Delete\" id=\"dev\" custId=" + res.interviewId + "></td>"+
                         "</tr>";
                     $("#interviewTable tbody").append(markup);
+                   // alert("Successfully added");
 
                 },
                 error: function(xhr, status, error) {
